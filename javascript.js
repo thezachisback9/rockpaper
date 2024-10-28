@@ -1,5 +1,26 @@
 let hscore = 0;
 let cscore = 0;
+const divv = document.createElement("div");
+document.body.appendChild(divv);
+let human = "";
+let comp = "";
+
+btn1.addEventListener("click", () => {
+  human = "r"
+  winner();
+});
+
+btn2.addEventListener("click", () => {
+  human = "p"
+  winner();
+});
+
+btn3.addEventListener("click", () => {
+  human = "s"
+  winner();
+});
+
+
 
 function getComputerChoice(){
     let num = Math.floor(Math.random() * 3)
@@ -14,24 +35,21 @@ function getComputerChoice(){
     return str;
 }
 
-function getHumanChoice(){
-    let ans = prompt("which do you choose? input s, r, or p");
-    return ans;
-}
-
 function winner(){
-    let human = getHumanChoice();
     let comp = getComputerChoice();
 
     if ((comp == "r" && human == "p") || (human == "r" && comp == "s") || (human == "s" && (comp == "p"))){
         hscore ++;
-        console.log("computer says: " + comp + "\nhuman says: " + human + "\nhuman wins\nhuman score: " + hscore + "\ncomputer score: " + cscore)
+        console.log("computer says: " + comp + "\nhuman says: " + human + "\nhuman score: " + hscore + "\ncomputer score: " + cscore)
+      divv.textContent = "human wins";
     } else if ((comp == "p" && human == "r") || (human == "s" && comp == "r") || (human == "p" && (comp == "s"))){
         cscore ++;
-        console.log("computer says: " + comp + "\nhuman says: " + human + "\ncomputer wins\nhuman score: " + hscore + "\ncomputer score: " + cscore)
+        console.log("computer says: " + comp + "\nhuman says: " + human + "\nhuman score: " + hscore + "\ncomputer score: " + cscore)
+      divv.textContent = "computer wins";
+
     } else if (human == comp){
-        console.log("computer says: " + comp + "\nhuman says: " + human + "\ncomputer wins\nhuman score: " + hscore + "\ncomputer score: " + cscore)
-        console.log("draw");
+        console.log("computer says: " + comp + "\nhuman says: " + human + "\nhuman score: " + hscore + "\ncomputer score: " + cscore)
+        divv.textContent = "draw";
     } else {
         console.log("must say s, r, or p");
         winner();
@@ -39,12 +57,4 @@ function winner(){
 }
 
 
-winner();
 
-winner();
-
-winner();
-
-winner();
-
-winner();
